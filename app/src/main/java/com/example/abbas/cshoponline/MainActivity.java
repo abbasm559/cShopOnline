@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
         showCartText();
 
+
         ListView listView;
         ProductAdapter mAdapter;
         spinner = findViewById(R.id.spinnerId);
         List<String>categories = new ArrayList<>();
        // categories.add("Select Category");
+        categories.add("All Products");
         categories.add("Electronics");
         categories.add("Clothes");
         categories.add("Cosmetics");
@@ -48,17 +51,17 @@ public class MainActivity extends AppCompatActivity {
         // --------- Properties of every list item--------------
 
         //----------titles----------------------
-        String pakhi3PcsTitle="Pakhi 3pcs";
-        String makeUpBoxTitle="Make up box";
-        String chakriThakbeNaTitle="Chakri thakbe na T-shirt";
-        String cardMobileTitle="Card mobile";
-        String smartWatchTitle="Smart watch DZ-08";
-        String tendaRouterTitle="Tenda router";
-        String waterHeatheTitle="Water heater";
-        String kidswearTitle="Kids wear kit";
-        String smartPenTitle="Smart pen";
+        final String pakhi3PcsTitle="Pakhi 3pcs";
+        final String makeUpBoxTitle="Make up box";
+        final String chakriThakbeNaTitle="Chakri thakbe na T-shirt";
+        final String cardMobileTitle="Card mobile";
+        final String smartWatchTitle="Smart watch DZ-08";
+        final String tendaRouterTitle="Tenda router";
+        final String waterHeatheTitle="Water heater";
+        final String kidswearTitle="Kids wear kit";
+        final String smartPenTitle="Smart pen";
         //------------descriptions---------------------
-        String pakhi3PcsDes="\n" +
+        final String pakhi3PcsDes="\n" +
                 "\n" +
                 "    অরিজিনাল প্রোডাক্ট\n" +
                 "\n" +
@@ -74,27 +77,27 @@ public class MainActivity extends AppCompatActivity {
                 "\n" +
                 "    আকর্ষণীয় ডিজাইন\n" +
                 "\n" +
-                "    ফ্যাশনেবল ও আরামদায়ক\n"; String price3Pcs= "3450";
+                "    ফ্যাশনেবল ও আরামদায়ক\n"; final String price3Pcs= "3450";
 
-        String makeUpBoxDes="Product details of Cosmetics Organizer Box - Transparent\n" +
+        final String makeUpBoxDes="Product details of Cosmetics Organizer Box - Transparent\n" +
                 "\n" +
                 "    Type: Storage Boxes\n" +
                 "    Material: Plastic\n" +
                 "    Style: Modern\n" +
                 "    Color: Transparent\n" +
                 "    Environmentally friendly, Stocked\n" +
-                "    Ideal for organizing and storing your makeup"; String makeUpBoxPri= "1990";
+                "    Ideal for organizing and storing your makeup"; final String makeUpBoxPri= "1990";
 
-        String chakriTNDes="\n" +
+        final String chakriTNDes="\n" +
                 "    Fabrics: Cotton\n" +
                 "    Fabrication: 180 GSM\n" +
                 "    Attractive Design\n" +
                 "    Color: As Given Picture\n" +
                 "    Computer Marvel Rubber Print\n" +
                 "    N.B: Please Check The Size Chart And Select Your Size Before Placing Order.\n" +
-                "    Disclaimer: The Actual Color Of The Physical Product May Slightly Vary Due To The Deviation Of Lighting Sources, Photography Or Your Device Display Settings."; String tShirtPrice ="999";
+                "    Disclaimer: The Actual Color Of The Physical Product May Slightly Vary Due To The Deviation Of Lighting Sources, Photography Or Your Device Display Settings."; final String tShirtPrice ="999";
 
-        String cardMobileDes="\n" +
+        final String cardMobileDes="\n" +
                 "\n" +
                 "ব্র্যান্ড: AEKU\n" +
                 "\n" +
@@ -112,16 +115,16 @@ public class MainActivity extends AppCompatActivity {
                 "\n" +
                 "সিঙ্গেল সিম\n" +
                 "\n" +
-                "কালার: র\u200C্যান্ডম\n"; String carMobPrice="2400";
+                "কালার: র\u200C্যান্ডম\n"; final String carMobPrice="2400";
 
-        String smartWatchDes="    Display: 1.54'' IPSCapacitive Touchscreen\n" +
+        final String smartWatchDes="    Display: 1.54'' IPSCapacitive Touchscreen\n" +
                 "    Resolutions: 240 x 240\n" +
                 "    Compatible OS: Android\n" +
                 "    RAM: 64MB, ROM: 128MB\n" +
                 "    Single SIM\n" +
-                "    Camera: VGA"; String smartWatchPri= "1400";
+                "    Camera: VGA"; final String smartWatchPri= "1400";
 
-        String tendaRouterDes="Wireless Speed\t2.4GHZ:300Mbps II\n" +
+        final String tendaRouterDes="Wireless Speed\t2.4GHZ:300Mbps II\n" +
                 "5GHZ:867Mbps II\n" +
                 "Button\t1*WPS/RESET button\n" +
                 "Antenna Type\t5 External Antennas\n" +
@@ -132,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 "SSID Broadcast Switch II\n" +
                 "Work Frequency: 2.4GHz,5GHz II\n" +
                 "Channel Of 2.4GHz:1-13 II\n" +
-                "Channel Of 5GHz: 149、153、157、161、165 II"; String routerPrice = "1950";
+                "Channel Of 5GHz: 149、153、157、161、165 II"; final String routerPrice = "1950";
 
-        String waterHeaterDes="\n" +
+        final String waterHeaterDes="\n" +
                 "\n" +
                 "    *Brand: Hyundai\n" +
                 "\n" +
@@ -152,9 +155,9 @@ public class MainActivity extends AppCompatActivity {
                 "\n" +
                 "    *Auto Switch Off Function after Boield.\n" +
                 "\n" +
-                "    *Mirror polished Stainless Steel.\n"; String wHeaterPri ="1150";
+                "    *Mirror polished Stainless Steel.\n"; final String wHeaterPri ="1150";
 
-        String kidsWearDes="\n" +
+        final String kidsWearDes="\n" +
                 "\n" +
                 "    Product type: Baby pack 7 pcs set.\n" +
                 "    Brand: Cussons.\n" +
@@ -162,28 +165,31 @@ public class MainActivity extends AppCompatActivity {
                 "    Good quality for kids.                                                                                           \n" +
                 "    Made in Indonesia.\n" +
                 "    Color: As same as picture.\n" +
-                "\n"; String kidswearPri = "5580";
+                "\n"; final String kidswearPri = "5580";
 
-        String smartPenDes="\n" +
+        final String smartPenDes="\n" +
                 "    Touch pen for smartphone and Tablets\n" +
                 "    Stylus Pen for Capacitive Touch screens\n" +
                 "    Pen clip for easy carry and storage\n" +
                 "    Super soft and flexible 7mm stylus tip design is replaceable\n" +
                 "    Highly sensitive and durable pen tip provides precision control\n" +
-                "    500,000 tap times for pen tip - SGS certified\n"; String smartPenPri= "2200";
+                "    500,000 tap times for pen tip - SGS certified\n"; final String smartPenPri= "2200";
 
 
         listView =findViewById(R.id.productListId);
         final ArrayList<Product> productList = new ArrayList<>();
-        productList.add(new Product(R.drawable.three_pcs, pakhi3PcsTitle ,pakhi3PcsDes, price3Pcs));
-        productList.add(new Product(R.drawable.make_up, makeUpBoxTitle , makeUpBoxDes ,makeUpBoxPri));
-        productList.add(new Product(R.drawable.t_shirt, chakriThakbeNaTitle ,chakriTNDes, tShirtPrice));
-        productList.add(new Product(R.drawable.card_mobile, cardMobileTitle ,cardMobileDes, carMobPrice));
-        productList.add(new Product(R.drawable.sm_watch, smartWatchTitle ,smartWatchDes, smartWatchPri));
-        productList.add(new Product(R.drawable.router, tendaRouterTitle ,tendaRouterDes ,routerPrice));
-        productList.add(new Product(R.drawable.water_heater, waterHeatheTitle ,waterHeaterDes ,wHeaterPri));
-        productList.add(new Product(R.drawable.kids_wear, kidswearTitle ,kidsWearDes ,kidswearPri));
-        productList.add(new Product(R.drawable.smart_pen, smartPenTitle ,smartPenDes ,smartPenPri));
+
+
+                        productList.add(new Product(R.drawable.three_pcs, pakhi3PcsTitle ,pakhi3PcsDes, price3Pcs));
+                        productList.add(new Product(R.drawable.make_up, makeUpBoxTitle , makeUpBoxDes ,makeUpBoxPri));
+                        productList.add(new Product(R.drawable.t_shirt, chakriThakbeNaTitle ,chakriTNDes, tShirtPrice));
+                        productList.add(new Product(R.drawable.card_mobile, cardMobileTitle ,cardMobileDes, carMobPrice));
+                        productList.add(new Product(R.drawable.sm_watch, smartWatchTitle ,smartWatchDes, smartWatchPri));
+                        productList.add(new Product(R.drawable.router, tendaRouterTitle ,tendaRouterDes ,routerPrice));
+                        productList.add(new Product(R.drawable.water_heater, waterHeatheTitle ,waterHeaterDes ,wHeaterPri));
+                        productList.add(new Product(R.drawable.kids_wear, kidswearTitle ,kidsWearDes ,kidswearPri));
+                        productList.add(new Product(R.drawable.smart_pen, smartPenTitle ,smartPenDes ,smartPenPri));
+                        
 
         mAdapter = new ProductAdapter(this,productList);
         listView.setAdapter(mAdapter);
@@ -213,6 +219,13 @@ public class MainActivity extends AppCompatActivity {
             cartTV.setText(result);
         }
     }
-
+    public void cartIntent(View view){
+        if (cartTV.getText().toString().equals("0")){
+            Toast.makeText(this, "No item added to cart yet!", Toast.LENGTH_SHORT).show();
+        }else {
+            Intent intent = new Intent(this,CartDetailsActivity.class);
+            startActivity(intent);
+        }
+    }
 
 }

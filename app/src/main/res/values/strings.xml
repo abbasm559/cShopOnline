@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">cShopOnline</string>
+    <string name="bdt">/-</string>
 </resources>

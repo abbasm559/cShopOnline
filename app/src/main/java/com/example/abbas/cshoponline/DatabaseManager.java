@@ -17,7 +17,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     static final String QUANTITY ="quantity";
     static final String PRICE ="price";
     static final String CREATE_TABLE = " CREATE TABLE "+TABLE_NAME+" (" +ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +TITLE+" TEXT, "+QUANTITY+" INTEGER, "+PRICE+" TEXT );";
+            +TITLE+" TEXT, "+QUANTITY+" INTEGER, "+PRICE+" INTEGER );";
 
 
     public DatabaseManager(Context context) {
@@ -38,7 +38,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public void insertData(String title, int quantity,String price, SQLiteDatabase database){
+    public void insertData(String title, int quantity,int price, SQLiteDatabase database){
         ContentValues contentValues = new ContentValues();
         contentValues.put(TITLE,title);
         contentValues.put(QUANTITY,quantity);
@@ -51,13 +51,30 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public Cursor getCartData(){
 
         sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT SUM (QUANTITY) AS totalQtt FROM "+TABLE_NAME,null);
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT SUM ("+QUANTITY+") AS totalQtt FROM "+TABLE_NAME,null);
         return cursor;
 
     }
     public Cursor getAllCartItem(){
         sqLiteDatabase= this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+TABLE_NAME,null);
+        return cursor;
+    }
+    public boolean deleteCartItem(int id){
+        sqLiteDatabase = this.getWritableDatabase();
+        try {
+        int deleteValue= sqLiteDatabase.delete(TABLE_NAME,ID+" =?", new String[]{String.valueOf(id)});
+        if (deleteValue>0){
+            return true;
+        }
+         }catch (Exception e){
+
+        }
+        return false;
+    }
+    public Cursor getTotalPrice(){
+        sqLiteDatabase= this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT SUM("+PRICE+") AS TotalPrice FROM "+TABLE_NAME,null);
         return cursor;
     }
 

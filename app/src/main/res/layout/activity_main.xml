@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#259640"
+    android:background="@color/backgroundClr"
     android:orientation="vertical"
     android:padding="8dp"
     tools:context=".MainActivity">
@@ -29,6 +29,7 @@
                 android:id="@+id/cartTextView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:onClick="cartIntent"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
                 android:background="@drawable/cart_small"

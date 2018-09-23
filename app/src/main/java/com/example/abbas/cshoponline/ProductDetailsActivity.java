@@ -1,6 +1,7 @@
 package com.example.abbas.cshoponline;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     Context context = this;
     DatabaseManager databaseManager = new DatabaseManager(this);
     SQLiteDatabase sqLiteDatabase;
+
 
 
     TextView titleTextView,descriptionTextView,priceTextView,quantityTv,cartQtt;
@@ -72,7 +74,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     public void addToCart(View view) {
         String title = titleTextView.getText().toString();
         int quantity = Integer.parseInt(quantityTv.getText().toString());
-        String price = priceTextView.getText().toString();
+        int price = Integer.parseInt(priceTextView.getText().toString());
 
         databaseManager = new DatabaseManager(context);
         sqLiteDatabase = databaseManager.getWritableDatabase();
@@ -81,19 +83,25 @@ public class ProductDetailsActivity extends AppCompatActivity {
         databaseManager.close();
         showData();
     }
+    @SuppressLint("SetTextI18n")
     public  void showData(){
         Cursor cursor = databaseManager.getCartData();
        // StringBuilder stringBuilder = new StringBuilder();
         if (cursor.moveToFirst()){
-                String result = String.valueOf(cursor.getInt(cursor.getColumnIndex("totalQtt")));
-                cartQtt.setText(result);
+            String resultOfQtt = String.valueOf(cursor.getInt(cursor.getColumnIndex("totalQtt")));
+                cartQtt.setText(resultOfQtt);
         }
-
     }
 
     public void cartIntent(View view) {
-        Intent intent = new Intent(ProductDetailsActivity.this,CartDetailsActivity.class);
-        startActivity(intent);
+        if (cartQtt.getText().toString().equals("0")) {
+            Toast.makeText(context, "No item added to cart yet!", Toast.LENGTH_SHORT).show();
+
+        }else {
+            Intent intent = new Intent(ProductDetailsActivity.this,CartDetailsActivity.class);
+            startActivity(intent);
+        }
+
     }
 
 }
