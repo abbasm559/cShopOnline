@@ -1,52 +1,46 @@
 package com.example.abbas.cshoponline;
 
-import android.content.Intent;
+
 import android.database.Cursor;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class CartDetailsActivity extends AppCompatActivity {
-    ProductDetailsActivity.DatabaseManager databaseManager;
-    TextView textView;
+    DatabaseManager databaseManager;
+    ListView  cartList;
+    ArrayList<String> listCart;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_details);
-        textView = findViewById(R.id.cartDetailsTv);
 
-        Intent intent = getIntent();
-        String message = intent.getStringExtra("msg");
-        textView.setText(message);
+        cartList = findViewById(R.id.cartList);
+        listCart = new ArrayList<>();
+        adapter = new ArrayAdapter<>(CartDetailsActivity.this,android.R.layout.simple_list_item_1,listCart);
+        cartList.setAdapter(adapter);
 
-        /*Cursor cursor = databaseManager.getCartData();
-        if (cursor.moveToFirst()){
-            StringBuffer stringBuffer = new StringBuffer();
-            if (cursor.getCount()!=0){
-                do {
+        getAllCartData();
 
-                    stringBuffer.append("Title: " +cursor.getString(1)+"\n");
-                    stringBuffer.append("Quantity: "+cursor.getString(2)+"\n");
-                    stringBuffer.append("Price: "+cursor.getString(3)+"\n\n");
 
-                }while (cursor.moveToNext());
-            }
+}
 
-            getCartData("Total Cart element",stringBuffer.toString());
+    private void getAllCartData() {
+        databaseManager = new DatabaseManager(this);
+        Cursor cursor = databaseManager.getAllCartItem();
+        if (!cursor.moveToNext()){
+            Toast.makeText(this, "No data to show", Toast.LENGTH_SHORT).show();
+        }else {
+do {
+    listCart.add(cursor.getString(1)+"  Qtt: "+cursor.getString(2)+"  Price: "+cursor.getString(3));
 
-        }else {return;}
-
+}while (cursor.moveToNext());
     }
-    public void getCartData(String title,String message){
-
-        textView.setText(message);
-
-       *//* AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.setCancelable(true);
-        builder.show();*//*
-    }*/
 }}

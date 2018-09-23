@@ -43,7 +43,7 @@
                     android:id="@+id/cartQtt"
                     android:layout_width="56dp"
                     android:gravity="center"
-                    android:onClick="viewCartItem"
+                    android:onClick="cartIntent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/cart"
                     android:text="0"

@@ -16,17 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ScrollView
+    <ListView
+        android:id="@+id/cartList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TextView
-        android:layout_marginTop="8dp"
-        android:id="@+id/cartDetailsTv"
-        android:textStyle="bold"
-        android:textSize="22sp"
-        android:text="All cart item will be shown here"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    </ScrollView>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
