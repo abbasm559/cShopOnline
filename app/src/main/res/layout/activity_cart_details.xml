@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="@color/backgroundClr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,6 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#18611e">
+
+        <ImageButton
+            android:layout_marginEnd="8dp"
+            android:onClick="homeIntent"
+            android:src="@drawable/btn_home"
+            android:layout_width="50dp"
+            android:background="#18611e"
+            android:layout_height="50dp" />
 
         <TextView
             android:text="Total cart items"
@@ -25,6 +32,7 @@
     </android.support.v7.widget.Toolbar>
 
     <ListView
+        android:padding="8dp"
         android:id="@+id/cartList"
         android:layout_width="match_parent"
         android:layout_weight="10"

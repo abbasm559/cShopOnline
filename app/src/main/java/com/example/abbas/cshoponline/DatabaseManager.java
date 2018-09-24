@@ -60,17 +60,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+TABLE_NAME,null);
         return cursor;
     }
-    public boolean deleteCartItem(int id){
+    public int deleteCartItem(String id){
         sqLiteDatabase = this.getWritableDatabase();
-        try {
-        int deleteValue= sqLiteDatabase.delete(TABLE_NAME,ID+" =?", new String[]{String.valueOf(id)});
-        if (deleteValue>0){
-            return true;
-        }
-         }catch (Exception e){
-
-        }
-        return false;
+        int deleteValue= sqLiteDatabase.delete(TABLE_NAME,ID+" =?", new String[]{id});
+       return deleteValue;
     }
     public Cursor getTotalPrice(){
         sqLiteDatabase= this.getReadableDatabase();

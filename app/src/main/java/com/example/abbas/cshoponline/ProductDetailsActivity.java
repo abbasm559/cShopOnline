@@ -75,7 +75,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         String title = titleTextView.getText().toString();
         int quantity = Integer.parseInt(quantityTv.getText().toString());
         int price = Integer.parseInt(priceTextView.getText().toString());
-
         databaseManager = new DatabaseManager(context);
         sqLiteDatabase = databaseManager.getWritableDatabase();
         databaseManager.insertData(title,quantity,price,sqLiteDatabase);
@@ -101,7 +100,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
             Intent intent = new Intent(ProductDetailsActivity.this,CartDetailsActivity.class);
             startActivity(intent);
         }
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showData();
+    }
+
+    public void homeIntent(View view) {
+        Intent intent = new Intent(ProductDetailsActivity.this,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 }

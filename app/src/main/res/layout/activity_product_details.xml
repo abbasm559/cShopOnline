@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+
     android:background="@color/backgroundClr"
     android:layout_height="match_parent"
     tools:context=".ProductDetailsActivity">
@@ -15,11 +15,19 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#005013">
 
+        <ImageButton
+            android:layout_marginEnd="8dp"
+            android:onClick="homeIntent"
+            android:src="@drawable/btn_home"
+            android:layout_width="50dp"
+            android:background="#005013"
+            android:layout_height="50dp" />
+
         <TextView
             android:id="@+id/detailedTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Label"
+            android:text="Product title"
             android:textColor="#ffffff"
             android:textSize="24sp" />
 
@@ -29,28 +37,30 @@
             android:gravity="end"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/productId"
-                android:text="Product id"
-                android:textColor="#fff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
             <RelativeLayout
+                android:onClick="cartIntent"
+                android:layout_marginEnd="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
                 <TextView
                     android:id="@+id/cartQtt"
-                    android:layout_width="56dp"
-                    android:gravity="center"
-                    android:onClick="cartIntent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/cart"
+                    android:layout_alignParentBottom="true"
                     android:text="0"
-                    android:textColor="#ffffff"
-                    android:textSize="30sp" />
+                    android:textColor="@android:color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"/>
+
+                <ImageButton
+                    android:layout_toRightOf="@+id/cartQtt"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cart"
+                    android:background="#005013"
+                     />
             </RelativeLayout>
 
         </LinearLayout>
@@ -61,6 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:padding="16dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
