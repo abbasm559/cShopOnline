@@ -41,7 +41,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         name.setText(currentProduct.getTitle());
 
         TextView release = listItem.findViewById(R.id.icPriceTv);
-        release.setText(currentProduct.getPrice());
+        release.setText(currentProduct.getPrice()+"/-");
 
         return listItem;
     }

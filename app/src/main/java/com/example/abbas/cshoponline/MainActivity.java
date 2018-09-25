@@ -2,6 +2,7 @@ package com.example.abbas.cshoponline;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,11 +42,10 @@ public class MainActivity extends AppCompatActivity {
         categories.add("Clothes");
         categories.add("Cosmetics");
         categories.add("Sports");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, categories);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-        spinner.setPrompt("Select Category");
-        spinner.setAlpha(1);
+
 
 
         // --------- Properties of every list item--------------
@@ -228,9 +228,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
-    protected void onResume() {
-        super.onResume();
-        showCartText();
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

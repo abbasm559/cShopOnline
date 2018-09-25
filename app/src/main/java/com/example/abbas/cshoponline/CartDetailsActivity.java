@@ -8,8 +8,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +26,7 @@ public class CartDetailsActivity extends AppCompatActivity {
     ArrayList<String> listCart;
     ArrayAdapter<String> adapter;
     TextView totalPriceTv;
+    ImageButton homeBtn;
     Cursor cursor;
 
     @Override
@@ -29,10 +34,11 @@ public class CartDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_details);
 
+        homeBtn = findViewById(R.id.homeBtn);
         cartList = findViewById(R.id.cartList);
         totalPriceTv = findViewById(R.id.totalPriceTV);
         listCart = new ArrayList<>();
-        adapter = new ArrayAdapter<>(CartDetailsActivity.this,android.R.layout.simple_list_item_1,listCart);
+        adapter = new ArrayAdapter<>(CartDetailsActivity.this,R.layout.cart_list_item,listCart);
         cartList.setAdapter(adapter);
 
         cartList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,10 +78,9 @@ private void getAllCartData() {
         cursor = databaseManager.getAllCartItem();
         if (!cursor.moveToNext()){
             Toast.makeText(this, "No data to show", Toast.LENGTH_SHORT).show();
-        }else {
+        }else if (cursor.moveToFirst()){
 do {
-    listCart.add(cursor.getString(1)+"  Qtt: "+cursor.getString(2)+"  Price: "+cursor.getString(3));
-
+    listCart.add(cursor.getString(1)+"  Qtt: "+cursor.getString(2)+"  Price: "+cursor.getString(3)+"/-");
 }while (cursor.moveToNext());
     }
 }
@@ -95,5 +100,15 @@ private void getTotalPrice(){
         Intent intent = new Intent(CartDetailsActivity.this,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Animation mAnimation = new AlphaAnimation(1, 0);
+        mAnimation.setDuration(50);
+        mAnimation.setInterpolator(new LinearInterpolator());
+        mAnimation.setRepeatCount(7);
+        mAnimation.setRepeatMode(Animation.REVERSE);
+        homeBtn.startAnimation(mAnimation);
     }
 }

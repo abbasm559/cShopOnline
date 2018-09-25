@@ -9,6 +9,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +24,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     SQLiteDatabase sqLiteDatabase;
 
 
+    ImageButton homeBtn;
 
     TextView titleTextView,descriptionTextView,priceTextView,quantityTv,cartQtt;
     ImageView imageView;
@@ -35,6 +40,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         quantityTv= findViewById(R.id.quantityTv);
         imageView = findViewById(R.id.detailedImage);
         cartQtt = findViewById(R.id.cartQtt);
+        homeBtn= findViewById(R.id.homeBtn);
         Intent intent = getIntent();
         int imageID =getIntent().getIntExtra(ProductCredentials.imageKye,0);
 
@@ -112,5 +118,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(ProductDetailsActivity.this,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Animation mAnimation = new AlphaAnimation(1, 0);
+        mAnimation.setDuration(50);
+        mAnimation.setInterpolator(new LinearInterpolator());
+        mAnimation.setRepeatCount(7);
+        mAnimation.setRepeatMode(Animation.REVERSE);
+        homeBtn.startAnimation(mAnimation);
     }
 }

@@ -14,6 +14,7 @@
         android:textColor="#ffffff"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textSize="22sp"
         android:layout_toRightOf="@+id/idProductImage"
         android:text="Title will be here"
         android:id="@+id/idTitleTv"
@@ -26,6 +27,7 @@
         android:layout_below="@+id/idTitleTv"
         android:layout_alignParentEnd="true"
         android:id="@+id/icPriceTv"
+        android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

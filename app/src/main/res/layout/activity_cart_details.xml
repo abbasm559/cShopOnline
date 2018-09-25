@@ -14,6 +14,7 @@
         android:background="#18611e">
 
         <ImageButton
+            android:id="@+id/homeBtn"
             android:layout_marginEnd="8dp"
             android:onClick="homeIntent"
             android:src="@drawable/btn_home"
@@ -38,7 +39,7 @@
         android:layout_weight="10"
         android:layout_height="0dp"/>
     <LinearLayout
-        android:background="#6c6aba"
+        android:background="#0022ff"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
@@ -48,7 +49,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000"
+            android:textColor="@android:color/white"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent" />
@@ -58,7 +59,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             android:text="3000 BDT"
-            android:textColor="#000000"
+            android:textColor="@android:color/white"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent" />
