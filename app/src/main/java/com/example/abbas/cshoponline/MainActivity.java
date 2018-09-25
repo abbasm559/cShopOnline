@@ -13,6 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.abbas.cshoponline.adapters.ProductAdapter;
+import com.example.abbas.cshoponline.models.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 

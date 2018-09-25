@@ -1,4 +1,4 @@
-package com.example.abbas.cshoponline;
+package com.example.abbas.cshoponline.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.abbas.cshoponline.R;
+import com.example.abbas.cshoponline.models.Product;
 
 import java.util.ArrayList;
 import java.util.List;

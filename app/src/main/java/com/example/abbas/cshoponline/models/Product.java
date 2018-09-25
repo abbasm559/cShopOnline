@@ -1,4 +1,4 @@
-package com.example.abbas.cshoponline;
+package com.example.abbas.cshoponline.models;
 
 public class Product {
 

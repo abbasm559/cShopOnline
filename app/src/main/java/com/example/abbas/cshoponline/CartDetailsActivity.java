@@ -94,6 +94,7 @@ private void getTotalPrice(){
 }
 
     public void placeOrder(View view) {
+        startActivity(new Intent(CartDetailsActivity.this,PlaceOrderActivity.class));
     }
 
     public void homeIntent(View view) {
