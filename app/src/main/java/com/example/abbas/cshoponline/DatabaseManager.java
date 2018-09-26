@@ -70,5 +70,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT SUM("+PRICE+") AS TotalPrice FROM "+TABLE_NAME,null);
         return cursor;
     }
+    public int updateCart(String id, String title, int quantity , int price){
+        sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ID,id);
+        contentValues.put(TITLE,title);
+        contentValues.put(QUANTITY,quantity);
+        contentValues.put(PRICE,price);
+        int updateValue = sqLiteDatabase.update(TABLE_NAME,contentValues,ID+" =? ",new String[]{});
+        return updateValue;
+    }
 
 }

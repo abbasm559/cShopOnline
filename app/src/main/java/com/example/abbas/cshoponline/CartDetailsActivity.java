@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +29,9 @@ public class CartDetailsActivity extends AppCompatActivity {
     TextView totalPriceTv;
     ImageButton homeBtn;
     Cursor cursor;
+    ArrayList<String> ids;
+    ArrayList<String>titles;
+    ArrayList<String> prices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +47,17 @@ public class CartDetailsActivity extends AppCompatActivity {
 
         cartList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CartDetailsActivity.this);
-                builder.setTitle("Warning!");
-                builder.setMessage("Deletion will remove this item, are you sure to delete?");
+            public void onItemClick(AdapterView<?> parent, View view, final int position, final long id) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(CartDetailsActivity.this);
+                builder.setTitle("Chose an action");
+                builder.setMessage("You can update or delete this item.");
                 builder.setCancelable(true);
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                      int result = databaseManager.deleteCartItem(String.valueOf(position));
+                        String id = ids.get(position);
+
+                      int result = databaseManager.deleteCartItem(id);
                         if (result>0){
                             Toast.makeText(CartDetailsActivity.this, "Deleted!", Toast.LENGTH_SHORT).show();
                             finish();
@@ -59,9 +65,36 @@ public class CartDetailsActivity extends AppCompatActivity {
                         }
 
                     }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("Update", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        final EditText editText = new EditText(CartDetailsActivity.this);
+//                        final int quantity = Integer.parseInt(editText.getText().toString());
+
+
+
+                        AlertDialog.Builder builderUpdate = new AlertDialog.Builder(CartDetailsActivity.this);
+                        builderUpdate.setView(editText);
+                        builderUpdate.setTitle("Input Quantity");
+                        builderUpdate.setCancelable(true);
+                        builderUpdate.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String id = ids.get(position);
+                                String title = titles.get(position);
+                                String price = prices.get(position);
+
+                                int updateData = databaseManager.updateCart(id,title,Integer.parseInt(editText.getText().toString()),Integer.parseInt(price));
+                                if (updateData>0){
+                                    Toast.makeText(CartDetailsActivity.this, "Quantity updated!", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                    startActivity(getIntent());
+                                }
+
+                            }
+                        }).show();
+
 
                     }
                 }).show();
@@ -75,11 +108,17 @@ public class CartDetailsActivity extends AppCompatActivity {
 }
 private void getAllCartData() {
         databaseManager = new DatabaseManager(this);
+        ids = new ArrayList<>();
+        titles = new ArrayList<>();
+        prices = new ArrayList<>();
         cursor = databaseManager.getAllCartItem();
         if (!cursor.moveToNext()){
             Toast.makeText(this, "No data to show", Toast.LENGTH_SHORT).show();
         }else if (cursor.moveToFirst()){
 do {
+    ids.add(cursor.getString(0));
+    titles.add(cursor.getString(1));
+    prices.add(cursor.getString(3));
     listCart.add(cursor.getString(1)+"  Qtt: "+cursor.getString(2)+"  Price: "+cursor.getString(3)+"/-");
 }while (cursor.moveToNext());
     }
