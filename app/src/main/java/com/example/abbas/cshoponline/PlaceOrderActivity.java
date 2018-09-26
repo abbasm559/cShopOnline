@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.abbas.cshoponline.models.Order;
 import com.google.firebase.database.DatabaseReference;
@@ -15,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class PlaceOrderActivity extends AppCompatActivity {
     EditText nameEt,phoneEt,addressEt;
     RadioButton btnBkash,btnCoD;
-    TextView totalPriceTv,shiftingCostTv,totalCostTv;
+    TextView totalPriceTv,shiftingCostTv,totalCostTv,thankTxt;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference;
@@ -33,6 +32,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
         totalPriceTv = findViewById(R.id.totalPriceTV);
         shiftingCostTv = findViewById(R.id.shiftingCostTv);
         totalCostTv = findViewById(R.id.totalCostTv);
+        thankTxt = findViewById(R.id.thankText);
 
         reference = database.getReference("orders");
 
@@ -67,7 +67,9 @@ public class PlaceOrderActivity extends AppCompatActivity {
             phoneEt.setText("");
             addressEt.setText("");
 
-            Toast.makeText(this, "Order placed!", Toast.LENGTH_SHORT).show();
+            thankTxt.setText(getString(R.string.thank_text)+orderNumber);
+            thankTxt.setVisibility(View.VISIBLE);
+
 
         }
     }

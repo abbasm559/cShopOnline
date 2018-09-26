@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">cShopOnline</string>
     <string name="bdt">/-</string>
+    <string name="thank_text">Thank you for ordering. \n  Your order number is :\n </string>
 </resources>

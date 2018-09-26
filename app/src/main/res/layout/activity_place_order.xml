@@ -83,6 +83,15 @@
             android:text="Please select payment method below:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/thankText"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textIsSelectable="true"
+            android:text="Thank you for placing order."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <RadioGroup
             android:orientation="horizontal"
