@@ -70,7 +70,7 @@ public class CartDetailsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         final EditText editText = new EditText(CartDetailsActivity.this);
-//                        final int quantity = Integer.parseInt(editText.getText().toString());
+
 
 
 
@@ -85,8 +85,8 @@ public class CartDetailsActivity extends AppCompatActivity {
                                 String title = titles.get(position);
                                 String price = prices.get(position);
 
-                                int updateData = databaseManager.updateCart(id,title,Integer.parseInt(editText.getText().toString()),Integer.parseInt(price));
-                                if (updateData>0){
+                                boolean updateData = databaseManager.updateCart(id,title,Integer.parseInt(editText.getText().toString()),Integer.parseInt(price));
+                                if (updateData){
                                     Toast.makeText(CartDetailsActivity.this, "Quantity updated!", Toast.LENGTH_SHORT).show();
                                     finish();
                                     startActivity(getIntent());
