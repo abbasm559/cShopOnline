@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -18,6 +19,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -70,6 +73,7 @@ public class CartDetailsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         final EditText editText = new EditText(CartDetailsActivity.this);
+                        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
 
 
 
@@ -84,14 +88,19 @@ public class CartDetailsActivity extends AppCompatActivity {
                                 String id = ids.get(position);
                                 String title = titles.get(position);
                                 String price = prices.get(position);
-
-                                boolean updateData = databaseManager.updateCart(id,title,Integer.parseInt(editText.getText().toString()),Integer.parseInt(price));
-                                if (updateData){
-                                    Toast.makeText(CartDetailsActivity.this, "Quantity updated!", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                    startActivity(getIntent());
+                                String quantity= editText.getText().toString().trim();
+                                int quantityInInt = 1;
+                                if (quantity.isEmpty()||quantity.startsWith("0")){
+                                    Toast.makeText(CartDetailsActivity.this, "Input a valid number", Toast.LENGTH_LONG).show();
+                                }else{
+                                    quantityInInt = Integer.parseInt(quantity);
+                                    boolean updateData = databaseManager.updateCart(id,title,quantityInInt,Integer.parseInt(price));
+                                    if (updateData){
+                                        Toast.makeText(CartDetailsActivity.this, "Quantity updated!", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                        startActivity(getIntent());
+                                    }
                                 }
-
                             }
                         }).show();
 
