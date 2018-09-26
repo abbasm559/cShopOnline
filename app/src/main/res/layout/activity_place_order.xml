@@ -19,157 +19,157 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Name:"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/nameEt"
+                android:hint="Enter your Name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Phone:"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/phoneEt"
+                android:hint="Enter phone number"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Address:"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/addressEt"
+                android:hint="Enter your Address"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="100dp" />
+
+        </LinearLayout>
 
         <TextView
-            android:text="Name:"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:textSize="18sp"
+            android:text="Please select payment method below:"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/nameEt"
-            android:hint="Enter your Name"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/radioBkash"
+                android:text="bKash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:id="@+id/radioCoD"
+                android:text="Cash on Delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:text="Phone:"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+        </RadioGroup>
 
-        <EditText
-            android:id="@+id/phoneEt"
-            android:hint="Enter phone number"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+            <TextView
+                android:gravity="center_horizontal"
+                android:text="Total Price: "
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/totalPriceTv"
+                android:gravity="center_horizontal"
+                android:text="5000/- "
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
 
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </LinearLayout>
 
-        <TextView
-            android:text="Address:"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/addressEt"
-            android:hint="Enter your Address"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="100dp" />
+            <TextView
+                android:gravity="center_horizontal"
+                android:text="Shifting Cost: "
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/shiftingCostTv"
+                android:gravity="center_horizontal"
+                android:text="40/- "
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
 
-    <TextView
-        android:textSize="18sp"
-        android:text="Please select payment method below:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        </LinearLayout>
 
-    <RadioGroup
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radioBkash"
-            android:text="bKash"
+            <TextView
+                android:gravity="center_horizontal"
+                android:text="Total Cost: "
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/totalCostTv"
+                android:gravity="center_horizontal"
+                android:text="5040/- "
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:text="Finish"
+            android:onClick="sendInformation"
+            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <RadioButton
-            android:id="@+id/radioCoD"
-            android:text="Cash on Delivery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </RadioGroup>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:gravity="center_horizontal"
-            android:text="Total Price: "
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/totalPriceTv"
-            android:gravity="center_horizontal"
-            android:text="5000/- "
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:gravity="center_horizontal"
-            android:text="Shifting Cost: "
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/shiftingCostTv"
-            android:gravity="center_horizontal"
-            android:text="40/- "
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:gravity="center_horizontal"
-            android:text="Total Cost: "
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/totalCostTv"
-            android:gravity="center_horizontal"
-            android:text="5040/- "
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-
-    <Button
-        android:text="Finish"
-        android:onClick="sendInformation"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

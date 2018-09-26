@@ -1,0 +1,45 @@
+{
+  "project_info": {
+    "project_number": "286174660405",
+    "firebase_url": "https://cshoponline-164f0.firebaseio.com",
+    "project_id": "cshoponline-164f0",
+    "storage_bucket": "cshoponline-164f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286174660405:android:33cea86d0f258349",
+        "android_client_info": {
+          "package_name": "com.example.abbas.cshoponline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286174660405-6oq2flp2rgcq2mkh0gohe799jvjcvhhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB11ASk-TuICL1aYBo0uBLXJp_x3nYOlVs"
+        },
+        {
+          "current_key": "AIzaSyB11ASk-TuICL1aYBo0uBLXJp_x3nYOlVs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

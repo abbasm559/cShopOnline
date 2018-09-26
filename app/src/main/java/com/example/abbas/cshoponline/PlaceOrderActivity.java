@@ -40,7 +40,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
     }
 
     public void sendInformation(View view) {
-        addOrder();
+         addOrder();
     }
 
     public void addOrder(){
@@ -48,6 +48,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
         String phone = phoneEt.getText().toString().trim();
         String address = addressEt.getText().toString().trim();
         String totalCost = totalCostTv.getText().toString();
+        String orderNumber = reference.push().getKey();
         if (name.isEmpty()){
             nameEt.setError("Input name");
         }else if (phone.isEmpty()){
@@ -56,16 +57,15 @@ public class PlaceOrderActivity extends AppCompatActivity {
             addressEt.setError("Address to receive product");
         }else {
 
-            String orderNumber = reference.push().getKey();
+
             Order order = new Order(name,phone,address,orderNumber,totalCost);
-            assert orderNumber != null;
             reference.child(orderNumber).setValue(order);
 
             //to see the data go to https://cshoponline-71fc1.firebaseio.com/
 
-            /*nameEt.setText("");
+            nameEt.setText("");
             phoneEt.setText("");
-            addressEt.setText("");*/
+            addressEt.setText("");
 
             Toast.makeText(this, "Order placed!", Toast.LENGTH_SHORT).show();
 
