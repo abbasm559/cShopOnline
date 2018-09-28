@@ -8,7 +8,7 @@
 
     android:background="@color/backgroundClr"
     android:layout_height="match_parent"
-    tools:context=".ProductDetailsActivity">
+    tools:context=".activity_classes.ProductDetailsActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

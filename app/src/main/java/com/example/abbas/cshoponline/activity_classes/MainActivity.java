@@ -1,4 +1,4 @@
-package com.example.abbas.cshoponline;
+package com.example.abbas.cshoponline.activity_classes;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,6 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.abbas.cshoponline.DatabaseManager;
+import com.example.abbas.cshoponline.ProductCredentials;
+import com.example.abbas.cshoponline.R;
 import com.example.abbas.cshoponline.adapters.ProductAdapter;
 import com.example.abbas.cshoponline.models.Product;
 

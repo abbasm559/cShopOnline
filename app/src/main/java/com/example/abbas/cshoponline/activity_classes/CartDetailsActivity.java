@@ -1,4 +1,4 @@
-package com.example.abbas.cshoponline;
+package com.example.abbas.cshoponline.activity_classes;
 
 
 import android.content.DialogInterface;
@@ -20,13 +20,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+
+import com.example.abbas.cshoponline.DatabaseManager;
+import com.example.abbas.cshoponline.R;
 
 import java.util.ArrayList;
 
 public class CartDetailsActivity extends AppCompatActivity {
     DatabaseManager databaseManager;
-    ListView  cartList;
+    ListView cartList;
     ArrayList<String> listCart;
     ArrayAdapter<String> adapter;
     TextView totalPriceTv;
@@ -40,7 +42,6 @@ public class CartDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_details);
-
         homeBtn = findViewById(R.id.homeBtn);
         cartList = findViewById(R.id.cartList);
         totalPriceTv = findViewById(R.id.totalPriceTV);
@@ -59,24 +60,18 @@ public class CartDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String id = ids.get(position);
-
                       int result = databaseManager.deleteCartItem(id);
                         if (result>0){
                             Toast.makeText(CartDetailsActivity.this, "Deleted!", Toast.LENGTH_SHORT).show();
                             finish();
                             startActivity(getIntent());
                         }
-
                     }
                 }).setNegativeButton("Update", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         final EditText editText = new EditText(CartDetailsActivity.this);
                         editText.setInputType(InputType.TYPE_CLASS_NUMBER);
-
-
-
 
                         AlertDialog.Builder builderUpdate = new AlertDialog.Builder(CartDetailsActivity.this);
                         builderUpdate.setView(editText);
@@ -103,17 +98,12 @@ public class CartDetailsActivity extends AppCompatActivity {
                                 }
                             }
                         }).show();
-
-
                     }
                 }).show();
             }
         });
-
         getAllCartData();
         getTotalPrice();
-
-
 }
 private void getAllCartData() {
         databaseManager = new DatabaseManager(this);
@@ -137,19 +127,9 @@ private void getTotalPrice(){
         cursor = databaseManager.getTotalPrice();
         if (cursor.moveToFirst()){
             String result = String.valueOf(cursor.getInt(cursor.getColumnIndex("TotalPrice")));
-            totalPriceTv.setText(result+getString(R.string.bdt));
+            totalPriceTv.setText(result);
         }
 }
-
-    public void placeOrder(View view) {
-        startActivity(new Intent(CartDetailsActivity.this,PlaceOrderActivity.class));
-    }
-
-    public void homeIntent(View view) {
-        Intent intent = new Intent(CartDetailsActivity.this,MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 
     @Override
     public void onBackPressed() {
@@ -159,5 +139,17 @@ private void getTotalPrice(){
         mAnimation.setRepeatCount(7);
         mAnimation.setRepeatMode(Animation.REVERSE);
         homeBtn.startAnimation(mAnimation);
+    }
+
+    public void placeOrder(View view) {
+        Intent intent = new Intent(CartDetailsActivity.this,PlaceOrderActivity.class);
+        intent.putExtra("totalPrice",totalPriceTv.getText().toString());
+        startActivity(intent);
+    }
+
+    public void homeIntent(View view) {
+        Intent intent = new Intent(CartDetailsActivity.this,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

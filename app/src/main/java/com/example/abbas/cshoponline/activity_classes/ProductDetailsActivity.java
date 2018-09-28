@@ -1,4 +1,4 @@
-package com.example.abbas.cshoponline;
+package com.example.abbas.cshoponline.activity_classes;
 
 
 import android.annotation.SuppressLint;
@@ -16,6 +16,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.abbas.cshoponline.DatabaseManager;
+import com.example.abbas.cshoponline.ProductCredentials;
+import com.example.abbas.cshoponline.R;
 
 
 public class ProductDetailsActivity extends AppCompatActivity {

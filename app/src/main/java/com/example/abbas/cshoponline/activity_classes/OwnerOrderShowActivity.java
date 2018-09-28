@@ -1,7 +1,9 @@
-package com.example.abbas.cshoponline;
+package com.example.abbas.cshoponline.activity_classes;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.abbas.cshoponline.R;
 
 public class OwnerOrderShowActivity extends AppCompatActivity {
 
