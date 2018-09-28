@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     DatabaseManager databaseManager= new DatabaseManager(this);
+    ImageButton srcBtn;
     Spinner spinner;
     TextView cartTV;
 
@@ -33,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         cartTV = findViewById(R.id.cartTextView);
+        srcBtn = findViewById(R.id.searchBtn);
+        srcBtn.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                startActivity(new Intent(MainActivity.this,OwnerOrderShowActivity.class));
+                return true;
+            }
+        });
 
 
         showCartText();
