@@ -4,31 +4,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/backgroundClr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity_classes.LoginActivity">
     <android.support.v7.widget.Toolbar
+        android:background="@color/toolBarClr"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
         <TextView
-            android:text="Something"
+            android:text="Lon In"
             android:textStyle="bold"
-            android:textSize="40sp"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:textColor="@color/textClr"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </android.support.v7.widget.Toolbar>
-
+<LinearLayout
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <TextView
         android:text="E-Mail"
+        android:textColor="@color/textClr"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textStyle="bold"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content" />
         <EditText
+            android:textColor="@color/textClr"
+            android:textColorHint="@color/textClr"
             android:hint="E-mail here"
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -40,12 +51,15 @@
         android:layout_height="wrap_content">
     <TextView
         android:textStyle="bold"
+        android:textColor="@color/textClr"
         android:text="Password"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content" />
         <EditText
+            android:textColor="@color/textClr"
+            android:textColorHint="@color/textClr"
             android:hint="Password here"
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -60,10 +74,10 @@
     <TextView
         android:onClick="signUp"
         android:textAlignment="center"
-        android:textColor="#000e87"
+        android:textColor="#c60941"
         android:text="Don't have an account? Sign up here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-
+</LinearLayout>
 </LinearLayout>

@@ -3,15 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/backgroundClr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity_classes.PlaceOrderActivity">
 
     <android.support.v7.widget.Toolbar
-        android:background="#0f691b"
+        android:background="@color/toolBarClr"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
+        <TextView
+            android:textAlignment="center"
+            android:text="Place order"
+            android:textSize="30sp"
+            android:textColor="@color/textClr"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </android.support.v7.widget.Toolbar>
 <ScrollView
     android:layout_width="match_parent"
@@ -27,12 +36,15 @@
 
             <TextView
                 android:text="Name:"
+                android:textColor="@color/textClr"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:textColor="@color/textClr"
+                android:textColorHint="@color/textClr"
                 android:id="@+id/nameEt"
                 android:hint="Enter your Name"
                 android:layout_width="0dp"
@@ -46,12 +58,15 @@
 
             <TextView
                 android:text="Phone:"
+                android:textColor="@color/textClr"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:textColor="@color/textClr"
+                android:textColorHint="@color/textClr"
                 android:id="@+id/phoneEt"
                 android:hint="Enter phone number"
                 android:layout_width="0dp"
@@ -66,12 +81,15 @@
 
             <TextView
                 android:text="Address:"
+                android:textColor="@color/textClr"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:textColor="@color/textClr"
+                android:textColorHint="@color/textClr"
                 android:id="@+id/addressEt"
                 android:hint="Enter your Address"
                 android:layout_width="0dp"
@@ -82,7 +100,8 @@
 
         <TextView
             android:onClick="logInIntent"
-            android:textColor="#030e87"
+            android:textColor="#b31033"
+            android:padding="8dp"
             android:textAlignment="center"
             android:text="Already have an account? Sing in here"
             android:layout_width="match_parent"
@@ -90,6 +109,7 @@
 
         <TextView
             android:textSize="18sp"
+            android:textColor="@color/textClr"
             android:text="Please select payment method below:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -97,6 +117,9 @@
             android:id="@+id/thankText"
             android:textSize="22sp"
             android:textStyle="bold"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:textColor="@color/textClr"
             android:textIsSelectable="true"
             android:text="Thank you for placing order."
             android:layout_width="match_parent"
@@ -113,11 +136,13 @@
             android:layout_height="wrap_content">
 
             <RadioButton
+                android:textColor="@color/textClr"
                 android:id="@+id/radioBkash"
                 android:text="bKash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <RadioButton
+                android:textColor="@color/textClr"
                 android:id="@+id/radioCoD"
                 android:text="Cash on Delivery"
                 android:layout_width="wrap_content"
@@ -134,12 +159,14 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:textColor="@color/textClr"
                 android:gravity="center_horizontal"
                 android:text="Total Price: "
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textColor="@color/textClr"
                 android:id="@+id/totalPriceTextView"
                 android:gravity="center_horizontal"
                 android:text="5000/- "
@@ -154,6 +181,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:textColor="@color/textClr"
                 android:gravity="center_horizontal"
                 android:text="Shifting Cost: "
                 android:layout_width="0dp"
@@ -161,6 +189,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:textColor="@color/textClr"
                 android:id="@+id/shiftingCostTv"
                 android:gravity="center_horizontal"
                 android:text="40/- "
@@ -175,6 +204,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:textColor="@color/textClr"
                 android:gravity="center_horizontal"
                 android:text="Total Cost: "
                 android:layout_width="0dp"
@@ -182,6 +212,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:textColor="@color/textClr"
                 android:id="@+id/totalCostTv"
                 android:gravity="center_horizontal"
                 android:text="5040/- "
@@ -193,6 +224,7 @@
         </LinearLayout>
         </LinearLayout>
         <Button
+            android:background="#18808e"
             android:text="Finish"
             android:onClick="sendInformation"
             android:layout_gravity="center_horizontal"

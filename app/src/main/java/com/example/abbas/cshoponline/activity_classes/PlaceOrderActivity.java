@@ -1,11 +1,14 @@
 package com.example.abbas.cshoponline.activity_classes;
 
+import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -27,7 +30,10 @@ public class PlaceOrderActivity extends AppCompatActivity {
     RadioButton btnBkash,btnCoD;
     TextView totalPriceTv,shiftingCostTv,totalCostTv,thankTxt;
     ListView listView;
+    LinearLayout linearLayout;
     List<String>orderList;
+
+    DatabaseManager databaseManager;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference;
@@ -46,6 +52,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
         shiftingCostTv = findViewById(R.id.shiftingCostTv);
         totalCostTv = findViewById(R.id.totalCostTv);
         thankTxt = findViewById(R.id.thankText);
+        linearLayout = findViewById(R.id.linearForHide);
         //listView = findViewById(R.id.finalListOfOrder);
 
         String totalPrice = getIntent().getStringExtra("totalPrice");
@@ -100,6 +107,15 @@ public class PlaceOrderActivity extends AppCompatActivity {
                     addressEt.setText("");
                     thankTxt.setText(getString(R.string.thank_text)+orderNumber);
                     thankTxt.setVisibility(View.VISIBLE);
+                    linearLayout.setVisibility(View.GONE);
+                    try {
+                        databaseManager.dropTable();
+                    }catch (Exception e){
+                        Toast.makeText(PlaceOrderActivity.this, ""+e, Toast.LENGTH_SHORT).show();
+                    }
+
+
+
                     Toast.makeText(PlaceOrderActivity.this, "Order Placed", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -119,6 +135,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
     }
 
     public void logInIntent(View view) {
-
+        Intent intent = new Intent(PlaceOrderActivity.this,LoginActivity.class);
+        startActivity(intent);
     }
 }
