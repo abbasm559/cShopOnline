@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,20 +28,18 @@ public class MainActivity extends AppCompatActivity {
     DatabaseManager databaseManager= new DatabaseManager(this);
     Spinner spinner;
     TextView cartTV;
+    ProductAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         cartTV = findViewById(R.id.cartTextView);
-
 
         showCartText();
 
 
-        ListView listView;
-        ProductAdapter mAdapter;
+        final ListView listView;
         spinner = findViewById(R.id.spinnerId);
         List<String>categories = new ArrayList<>();
        // categories.add("Select Category");
@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         final String waterHeatheTitle="Water heater";
         final String kidswearTitle="Kids wear kit";
         final String smartPenTitle="Smart pen";
+        final String footBall = "Adidas Foot Ball";
+        final String cricketBat= "Cricket bat";
         //------------descriptions---------------------
         final String pakhi3PcsDes="\n" +
                 "\n" +
@@ -180,25 +182,88 @@ public class MainActivity extends AppCompatActivity {
                 "    Super soft and flexible 7mm stylus tip design is replaceable\n" +
                 "    Highly sensitive and durable pen tip provides precision control\n" +
                 "    500,000 tap times for pen tip - SGS certified\n"; final String smartPenPri= "2200";
+                final String footBallDes= "Product Type: Football\n" +
+                        "For all\n" +
+                        "Material: PU\n" +
+                        "Machine Stitched\n" +
+                        "Size: 5\n" +
+                        "Inflated to a pressure";
+                final String footBallPri="1200";
+                final String cricketBatDes="Cricket bat is made with traditionally made from willow wood\n" +
+                        "Strong handle at the top of the bat to move the bat flexible\n" +
+                        "Handle of the bat is fully covered with a rubber grip.\n" +
+                        "Wooden color allover the body of the bat\n" +
+                        "Durable and long lasting\n" +
+                        "General size not more then 4.25 inches";
+                final String cricketBatPri="1500";
+
 
 
         listView =findViewById(R.id.productListId);
+
+        final ArrayList<Product> productListElectronics = new ArrayList<>();
         final ArrayList<Product> productList = new ArrayList<>();
+        final ArrayList<Product> productListCosmetics = new ArrayList<>();
+        final ArrayList<Product> productListClothes = new ArrayList<>();
+        final ArrayList<Product> productListSports = new ArrayList<>();
+
+        productList.add(new Product(R.drawable.three_pcs, pakhi3PcsTitle ,pakhi3PcsDes, price3Pcs));
+        productList.add(new Product(R.drawable.make_up, makeUpBoxTitle , makeUpBoxDes ,makeUpBoxPri));
+        productList.add(new Product(R.drawable.t_shirt, chakriThakbeNaTitle ,chakriTNDes, tShirtPrice));
+        productList.add(new Product(R.drawable.card_mobile, cardMobileTitle ,cardMobileDes, carMobPrice));
+        productList.add(new Product(R.drawable.sm_watch, smartWatchTitle ,smartWatchDes, smartWatchPri));
+        productList.add(new Product(R.drawable.router, tendaRouterTitle ,tendaRouterDes ,routerPrice));
+        productList.add(new Product(R.drawable.water_heater, waterHeatheTitle ,waterHeaterDes ,wHeaterPri));
+        productList.add(new Product(R.drawable.kids_wear, kidswearTitle ,kidsWearDes ,kidswearPri));
+        productList.add(new Product(R.drawable.smart_pen, smartPenTitle ,smartPenDes ,smartPenPri));
+        productList.add(new Product(R.drawable.football,footBall,footBallDes,footBallPri));
+        productList.add(new Product(R.drawable.cricket_bat,cricketBat,cricketBatDes,cricketBatPri));
+
+        productListElectronics.add(new Product(R.drawable.card_mobile, cardMobileTitle ,cardMobileDes, carMobPrice));
+        productListElectronics.add(new Product(R.drawable.sm_watch, smartWatchTitle ,smartWatchDes, smartWatchPri));
+        productListElectronics.add(new Product(R.drawable.router, tendaRouterTitle ,tendaRouterDes ,routerPrice));
+        productListElectronics.add(new Product(R.drawable.water_heater, waterHeatheTitle ,waterHeaterDes ,wHeaterPri));
+        productListElectronics.add(new Product(R.drawable.smart_pen, smartPenTitle ,smartPenDes ,smartPenPri));
+
+        productListClothes.add(new Product(R.drawable.three_pcs, pakhi3PcsTitle ,pakhi3PcsDes, price3Pcs));
+        productListClothes.add(new Product(R.drawable.t_shirt, chakriThakbeNaTitle ,chakriTNDes, tShirtPrice));
+        productListClothes.add(new Product(R.drawable.kids_wear, kidswearTitle ,kidsWearDes ,kidswearPri));
+
+        productListCosmetics.add(new Product(R.drawable.make_up, makeUpBoxTitle , makeUpBoxDes ,makeUpBoxPri));
+
+        productListSports.add(new Product(R.drawable.football,footBall,footBallDes,footBallPri));
+        productListSports.add(new Product(R.drawable.cricket_bat,cricketBat,cricketBatDes,cricketBatPri));
 
 
-                        productList.add(new Product(R.drawable.three_pcs, pakhi3PcsTitle ,pakhi3PcsDes, price3Pcs));
-                        productList.add(new Product(R.drawable.make_up, makeUpBoxTitle , makeUpBoxDes ,makeUpBoxPri));
-                        productList.add(new Product(R.drawable.t_shirt, chakriThakbeNaTitle ,chakriTNDes, tShirtPrice));
-                        productList.add(new Product(R.drawable.card_mobile, cardMobileTitle ,cardMobileDes, carMobPrice));
-                        productList.add(new Product(R.drawable.sm_watch, smartWatchTitle ,smartWatchDes, smartWatchPri));
-                        productList.add(new Product(R.drawable.router, tendaRouterTitle ,tendaRouterDes ,routerPrice));
-                        productList.add(new Product(R.drawable.water_heater, waterHeatheTitle ,waterHeaterDes ,wHeaterPri));
-                        productList.add(new Product(R.drawable.kids_wear, kidswearTitle ,kidsWearDes ,kidswearPri));
-                        productList.add(new Product(R.drawable.smart_pen, smartPenTitle ,smartPenDes ,smartPenPri));
-                        
 
-        mAdapter = new ProductAdapter(this,productList);
-        listView.setAdapter(mAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    mAdapter = new ProductAdapter(getApplicationContext(), productList);
+                    listView.setAdapter(mAdapter);
+                }else if (position==1){
+                    mAdapter = new ProductAdapter(getApplicationContext(),productListElectronics);
+                    listView.setAdapter(mAdapter);
+                }else if (position==2){
+                    mAdapter = new ProductAdapter(getApplicationContext(),productListClothes);
+                    listView.setAdapter(mAdapter);
+                }else if (position==3){
+                    mAdapter = new ProductAdapter(getApplicationContext(),productListCosmetics);
+                    listView.setAdapter(mAdapter);
+                }else if (position==4){
+                    mAdapter = new ProductAdapter(getApplicationContext(),productListSports);
+                    listView.setAdapter(mAdapter);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                mAdapter = new ProductAdapter(getApplicationContext(), productList);
+                listView.setAdapter(mAdapter);
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -206,7 +271,6 @@ public class MainActivity extends AppCompatActivity {
                 Product product = productList.get(i);
 
                 Intent intent = new Intent(MainActivity.this,ProductDetailsActivity.class);
-
                 intent.putExtra(ProductCredentials.imageKye,product.getProductImage());
                 intent.putExtra(ProductCredentials.titleKey,product.getTitle());
                 intent.putExtra(ProductCredentials.descriptionKye,product.getDescription());

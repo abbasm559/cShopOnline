@@ -80,5 +80,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
          sqLiteDatabase.update(TABLE_NAME,contentValues,ID+" =? ",new String[]{id});
         return true;
     }
+    public void dropTable(){
+        sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+
+    }
 
 }
