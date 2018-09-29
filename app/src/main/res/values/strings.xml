@@ -2,4 +2,6 @@
     <string name="app_name">cShopOnline</string>
     <string name="bdt">/-</string>
     <string name="thank_text">Thank you for ordering. \n  Your order number is :\n </string>
+    <string name="reg_msg">Dont have an account?Sign up</string>
+    <string name="login_msg">Already have an account?sign in</string>
 </resources>

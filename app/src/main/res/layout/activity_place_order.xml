@@ -84,7 +84,7 @@
             android:onClick="logInIntent"
             android:textColor="#030e87"
             android:textAlignment="center"
-            android:text="Already have an account? Sing in here"
+            android:text="Already have an account? Sign in here"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

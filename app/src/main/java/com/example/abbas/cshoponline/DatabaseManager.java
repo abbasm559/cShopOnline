@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class DatabaseManager extends SQLiteOpenHelper {
     SQLiteDatabase sqLiteDatabase;
     static final String DATABASE_NAME = "cartDatabase";
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 7;
     static final String TABLE_NAME= "productTable";
     static final String ID = "_id";
     static final String TITLE ="title";

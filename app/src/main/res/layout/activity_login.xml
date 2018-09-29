@@ -6,12 +6,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_classes.LoginActivity">
+    tools:context=".activity_classes.LoginActivity"
+    android:gravity="center">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
         <TextView
-            android:text="Something"
+            android:text="User Authentication"
             android:textStyle="bold"
             android:textSize="40sp"
             android:layout_width="match_parent"
@@ -19,51 +20,54 @@
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
+        android:layout_centerVertical="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TextView
-        android:text="E-Mail"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="User Login"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal" />
+
         <EditText
-            android:hint="E-mail here"
-            android:layout_width="0dp"
-            android:layout_weight="2"
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="Enter email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="Enter password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/buttonSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Sign In" />
+
+        <TextView
+            android:text="Not have an account? Signup Here"
+            android:id="@+id/textViewSignUp"
+            android:textAlignment="center"
+            android:layout_margin="15dp"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
-   <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TextView
-        android:textStyle="bold"
-        android:text="Password"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" />
-        <EditText
-            android:hint="Password here"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <Button
-        android:onClick="signIn"
-        android:layout_gravity="center_horizontal"
-        android:text="Sign In"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:onClick="signUp"
-        android:textAlignment="center"
-        android:textColor="#000e87"
-        android:text="Don't have an account? Sign up here"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 
 
 </LinearLayout>

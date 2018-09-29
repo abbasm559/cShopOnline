@@ -1,5 +1,6 @@
 package com.example.abbas.cshoponline.activity_classes;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -119,6 +120,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
     }
 
     public void logInIntent(View view) {
+        Intent loginIntent=new Intent(PlaceOrderActivity.this,LoginActivity.class);
+        startActivity(loginIntent);
 
     }
 }

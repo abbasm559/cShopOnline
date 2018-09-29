@@ -15,14 +15,19 @@
       },
       "oauth_client": [
         {
+          "client_id": "286174660405-84a939j07biedk3q3ikur4almvru4746.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abbas.cshoponline",
+            "certificate_hash": "cdc5b2cf5d41948902caee1c2c8f8838bcb056ad"
+          }
+        },
+        {
           "client_id": "286174660405-6oq2flp2rgcq2mkh0gohe799jvjcvhhj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
-        {
-          "current_key": "AIzaSyB11ASk-TuICL1aYBo0uBLXJp_x3nYOlVs"
-        },
         {
           "current_key": "AIzaSyB11ASk-TuICL1aYBo0uBLXJp_x3nYOlVs"
         }
@@ -32,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286174660405-6oq2flp2rgcq2mkh0gohe799jvjcvhhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
